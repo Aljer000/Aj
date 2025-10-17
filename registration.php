@@ -8,39 +8,51 @@
 <body>
 
 <?php
-// Check if form is submitted
+// --------------------------------------------------------
+// PHP Section: Handle form submission and display result
+// --------------------------------------------------------
+
+// Check if the form is submitted using POST method
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Retrieve all posted form data
-    $firstname = $_POST['firstname'];
-    $age = $_POST['age'];
-    $gender = $_POST['gender'];
-    $quote = $_POST['quote'];
 
-    // Create message
-    $msg = "You are " . $firstname . ", A " . $age . "-year-old " . $gender . ". Your motto in life is: " . $quote;
+    // Retrieve user inputs from the POST array
+    // $_POST is a superglobal array that holds all data sent via POST method
+    $firstname = $_POST['firstname'];  
+    $age = $_POST['age'];              
+    $gender = $_POST['gender'];        
+    $quote = $_POST['quote'];          
 
-    // Display the message
+    // Combine the user inputs into a formatted message
+    $msg = "You are " . $firstname . ", a " . $age . "-year-old " . $gender . ". Your motto in life is: " . $quote;
+
+    // Display a success message and the formatted user data
     echo "<h2>Registration Successful!</h2>";
     echo "<p>$msg</p>";
     echo "<hr>";
 }
 ?>
 
-<!-- Registration Form -->
+<!-- --------------------------------------------------------
+     HTML Section: Registration Form
+     --------------------------------------------------------
+     The form collects user data and submits it using POST.
+     Each field is required so the browser prevents empty submissions.
+-->
+
 <form method="POST" action="">
-    <!-- Input First Name -->
+    <!-- Input field for First Name -->
     <div>
         <div>First Name</div>
         <div><input type="text" name="firstname" required /></div>
     </div>
 
-    <!-- Input Age -->
+    <!-- Input field for Age -->
     <div>
         <div>Age</div>
         <div><input type="number" name="age" required /></div>
     </div>
 
-    <!-- Input Gender -->
+    <!-- Dropdown menu for Gender selection -->
     <div>
         <div>Gender</div>
         <div>
@@ -52,7 +64,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </div>
     </div>
 
-    <!-- Input Quote in Life -->
+    <!-- Textarea for user's Quote or Motto -->
     <div>
         <div>Quote in Life</div>
         <div><textarea name="quote" required></textarea></div>
